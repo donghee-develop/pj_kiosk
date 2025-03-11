@@ -1,19 +1,22 @@
-package com.challenge;
+package com.essential.lv4;
 
 import com.essential.lv2.MenuItem;
+import com.essential.lv3.Kiosk;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
-
+@NoArgsConstructor
 @Data
 public class Cart {
     private List<MenuItem> items;
     private Integer totalCount;
+    private Kiosk kiosk;
 
-    public Cart() {
-        this.items = new ArrayList<>();
+    public Cart(Kiosk kiosk, List<MenuItem> items) {
+        this.items = items;
         this.totalCount = 0;
+        this.kiosk = kiosk;
     }
     public void addItem(MenuItem item,int count) {
         for(int i=0; i<count; i++) {
@@ -40,6 +43,9 @@ public class Cart {
         }
         System.out.println("총 개수 : " + totalCount);
         System.out.println("총 가격 : " + getTotalPrice());
+        System.out.println("장바구니에 추가 되었습니다.");
+
+        kiosk.start();
 
     }
 }

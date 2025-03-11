@@ -1,6 +1,6 @@
 package com.essential.lv3;
 
-import com.challenge.Cart;
+import com.essential.lv4.Cart;
 import com.essential.lv2.MenuItem;
 import com.essential.lv4.Menu;
 import lombok.Data;
@@ -13,7 +13,7 @@ import java.util.Scanner;
 public class Kiosk {
     private List<Menu> menus;
     private final Scanner scanner;
-
+    private Cart cart;
     public Kiosk() {
         menus = new ArrayList<>();
         scanner = new Scanner(System.in);
@@ -61,7 +61,6 @@ public class Kiosk {
     // LV4
     public void start() {
         List<String> categories = new ArrayList<>();
-        Cart cart = new Cart();
 
         for(Menu menu : menus) {
             categories.add(menu.getCategory());
@@ -94,7 +93,7 @@ public class Kiosk {
                     System.out.println("1 확인 2 취소");
                     int cartChoice = scanner.nextInt();
 
-                    if(cartChoice ==1){
+                    if(cartChoice == 1){
                         cart.addItem(selectedItem,1);
                         cart.displayCart();
                     }

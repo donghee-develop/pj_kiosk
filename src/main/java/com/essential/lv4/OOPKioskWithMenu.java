@@ -13,8 +13,8 @@ public class OOPKioskWithMenu {
 
         // 음료 메뉴 생성
         Menu drinkMenu = new Menu("Drinks");
-        drinkMenu.add(new MenuItem("Lemonade", 3.5, "신선한 레몬과 설탕으로 만든 상큼한 레모네이드"));
-        drinkMenu.add(new MenuItem("Coke", 2.5, "탄산이 톡톡 터지는 콜라"));
+        drinkMenu.add(new MenuItem("Lemonade", 3.5, "레모네이드"));
+        drinkMenu.add(new MenuItem("Coke", 2.5, "콜라"));
 
         // 디저트 메뉴 생성
         Menu dessertMenu = new Menu("Desserts");

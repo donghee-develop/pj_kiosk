@@ -2,10 +2,12 @@ package com.essential.lv4;
 
 import com.essential.lv2.MenuItem;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
 @Data
 public class Menu {
     private String category;
