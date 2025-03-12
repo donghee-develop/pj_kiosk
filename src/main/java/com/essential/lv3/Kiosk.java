@@ -1,6 +1,5 @@
 package com.essential.lv3;
 
-import com.essential.lv4.Cart;
 import com.essential.lv2.MenuItem;
 import com.essential.lv4.Menu;
 import lombok.Data;
@@ -13,7 +12,6 @@ import java.util.Scanner;
 public class Kiosk {
     private List<Menu> menus;
     private final Scanner scanner;
-    private Cart cart;
     public Kiosk() {
         menus = new ArrayList<>();
         scanner = new Scanner(System.in);
@@ -34,10 +32,6 @@ public class Kiosk {
     public void start(List<MenuItem> menuItem) {
         while (true){
             System.out.println("[ Shack MENU ]");
-
-
-
-
             for(int i = 0; i < menuItem.size(); i++){
                 System.out.println((i+1) + ". " + menuItem.get(i).getName() + " 가격 : " + menuItem.get(i).getPrice() + " 설명 : " + menuItem.get(i).getDescription());
             }
@@ -50,7 +44,7 @@ public class Kiosk {
             else {
                 if(choice >= 1 && choice <= menuItem.size()){
                     MenuItem selectedItem = menuItem.get(choice - 1);
-                    System.out.printf("선택한 메뉴 : %s | W %.1f | %s\n",
+                    System.out.printf(" %s를 선택하셨습니다. 가격 :  %.1f \n",
                             selectedItem.getName(), selectedItem.getPrice(), selectedItem.getDescription());
                 } else {
                     System.out.println("잘못된 입력 0~4까지 입력하세요");
@@ -82,25 +76,13 @@ public class Kiosk {
                 scanner.nextLine();
 
                 if (itemChoice == 0) {
-                    System.out.println("뒤로 가기");
                     displayMenu();
                 } else if (itemChoice >= 1 && itemChoice <= selectedMenu.getMenuItemList().size()) {
                     MenuItem selectedItem = selectedMenu.getMenuItemList().get(itemChoice - 1);
                     System.out.printf("선택한 메뉴 : %s | W %.1f | %s\n",
                             selectedItem.getName(), selectedItem.getPrice(), selectedItem.getDescription());
+                    selectedMenu.displayMenuItems();
 
-                    System.out.println("장바구니에 추가하겠습니까?");
-                    System.out.println("1 확인 2 취소");
-                    int cartChoice = scanner.nextInt();
-
-                    if(cartChoice == 1){
-                        cart.addItem(selectedItem,1);
-                        cart.displayCart();
-                    }
-                    else if(cartChoice ==2){
-                        System.out.println("취소되었습니다.");
-                        displayMenu();
-                    }
                 } else {
                     System.out.println("잘못된 입력 0~" + selectedMenu.getMenuItemList().size() + "까지 입력하세요");
                 }

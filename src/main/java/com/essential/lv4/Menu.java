@@ -25,5 +25,7 @@ public class Menu {
         for (int i = 0; i < menuItemList.size(); i++) {
             System.out.println((i + 1) + ". " + menuItemList.get(i).getName() + " 가격 : " + menuItemList.get(i).getPrice() + " 설명 : " + menuItemList.get(i).getDescription());
         }
+        System.out.println("0. 뒤로가기");
+
     }
 }

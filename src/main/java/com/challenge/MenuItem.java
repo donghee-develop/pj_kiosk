@@ -1,12 +1,12 @@
-package com.essential.lv2;
+package com.challenge;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data
 @AllArgsConstructor
-public class MenuItem{
+@Data
+class MenuItem {
     private String name;
     private Double price;
     private String description;
