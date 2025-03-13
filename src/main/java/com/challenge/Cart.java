@@ -3,11 +3,14 @@ package com.challenge;
 import lombok.Data;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 @Data
 public class Cart {
     private List<MenuItem> items;
+    private static final Scanner scanner = new Scanner(System.in);
+
     public Cart() {
         this.items = new ArrayList<>();
     }
@@ -23,7 +26,6 @@ public class Cart {
         System.out.println("3. 학생     :  3%");
         System.out.println("4. 일반     :  0%");
         double discountedPrice;
-        Scanner scanner = new Scanner(System.in);
         int discountChoice = scanner.nextInt();
         //         일반, 마지막에는 throw new exception을 통해 반환
 //        if(discountChoice == 1){
@@ -68,19 +70,22 @@ public class Cart {
             System.out.printf("W %.1f\n", total);
 
             System.out.println("\n1. 주문  2. 메뉴판");
-            Scanner scanner = new Scanner(System.in);
-            int orderChoice = scanner.nextInt();
+            try {
+                int orderChoice = scanner.nextInt();
 
-            if (orderChoice == 1) {
-                double discountedTotalPrice = discountTotalPrice(total);
-                System.out.printf("주문이 완료되었습니다. 금액은 W %.1f 입니다.\n", discountedTotalPrice);
-                items.clear();
-            } else if(orderChoice == 2){
-                System.out.println("메뉴판으로 돌아갑니다.");
+                if (orderChoice == 1) {
+                    double discountedTotalPrice = discountTotalPrice(total);
+                    System.out.printf("주문이 완료되었습니다. 금액은 W %.1f 입니다.\n", discountedTotalPrice);
+                    items.clear();
+                } else if (orderChoice == 2) {
+                    System.out.println("메뉴판으로 돌아갑니다.");
+                } else {
+                    throw new IllegalArgumentException("잘못된 입력입니다. 다시 선택하세요");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("숫자만 입력하세요");
             }
-            else {
-                throw new IllegalArgumentException("잘못된 입력입니다. 다시 선택하세요");
-            }
+
         }
 
         public void clearCart () {
