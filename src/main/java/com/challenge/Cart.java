@@ -19,12 +19,16 @@ public class Cart {
         items.add(item);
         System.out.println(item.getName() + "이(가) 장바구니에 추가되었습니다.");
     }
-    public Double discountTotalPrice(double total) {
+    public void displayDiscountMenu(){
         System.out.println("할인 정보를 입력해주세요.");
         System.out.println("1. 국가유공자 : 10%");
         System.out.println("2. 군인     :  5%");
         System.out.println("3. 학생     :  3%");
         System.out.println("4. 일반     :  0%");
+    }
+    public Double discountTotalPrice(double total) {
+        displayDiscountMenu();
+        
         double discountedPrice;
         int discountChoice = scanner.nextInt();
         //         일반, 마지막에는 throw new exception을 통해 반환
